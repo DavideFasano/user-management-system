@@ -1,26 +1,22 @@
+https://www.edureka.co/blog/decrypt-md5-password-PHP/
 
-  # Validazione TASK-1
-  - [ ] completare la validazione del **User**
-      - [ ] lastName
-      - [ ] email 
-      - [ ] valore predefinito per la data   
-  
-  # Model TASK-2
-  - [ ] Finire il Model
-    - a.[x] **UserModel::readAll()** (elenco di tutti gli utenti)
+- Aggiungere la password
+  - [ ] aggiungere attributo password nel database
+  - [ ] aggiungere campo password nel form
+  - [ ] aggiungere proprietà password alla classe User
 
-  > FIX: argomenti di User nel costruttore
-  > too few arguments to function sarassoroberto\usm\entity\User::__construct(), 0 passed and exactly 4 expected 
-  > UserModel.php on line 49
-  > TO FIXED SEE: https://phpdelusions.net/pdo/objects#parameters
+  - Impostare la mail come  chiave unica nella tabella degli utenti. 
+  - how to set unique key in mysql 
 
-    $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
-      NOTA: 
-    - [x] **User::delete($user_id)** (cancellazione di un utente)
+<!-- - Quando crei un nuovo utente si cripta la password -->
 
-  > NOTE: Come faccio a sapere se ho veramente cancellato qualcosa ?
-  > https://www.php.net/manual/en/pdostatement.rowcount.php
+- [ ] Implementare la schermata di logIn
+    - [ ]  **login_user.php** controller
+    - [ ]  form inserisco email/username / password
+    - [ ]  implementare **UserModel::autenticate($username,$password):?User**
+    - [ ]  se l'utente esiste accedo all'elenco degli utenti
 
+<<<<<<< HEAD
     - [x] **UserModel::readOne($user_id)** (dati di un solo utente) 
   
   > FIX: argomenti di User nel costruttore (vedi sopra)
@@ -88,3 +84,5 @@
     - [] DELETE USER - cancellare riferimento nella tabella user_interesse
 
     - [] DELETE INTERESSE - cancellare riferimenti nella tabella user_interesse
+=======
+>>>>>>> 04d871ed19dd9363821369142102b4999f479bc5
