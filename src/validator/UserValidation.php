@@ -5,10 +5,10 @@ use sarassoroberto\usm\entity\User;
 
 class UserValidation {
 
-    public const FIRST_NAME_ERROR_NONE_MSG = 'Il nome è ggiusto !!';
+    public const FIRST_NAME_ERROR_NONE_MSG = 'Il nome è giusto !!';
     public const FIRST_NAME_ERROR_REQUIRED_MSG = 'Il nome è obbligatorio';
 
-    public const LAST_NAME_ERROR_NONE_MSG = 'Il cognome è ggiusto !!';
+    public const LAST_NAME_ERROR_NONE_MSG = 'Il cognome è giusto !!';
     public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
 
     public const BIRTHDAY_ERROR_FORMAT_MSG = 'Il formato della data non è valido';
@@ -18,6 +18,9 @@ class UserValidation {
     public const EMAIL_ERROR_FORMAT_MSG = 'Il formato dell\'email non è valido';
     public const EMAIL_ERROR_REQUIRED_MSG = 'La mail è obbligatoria';
     public const EMAIL_ERROR_NONE_MSG = 'Il formato della email è corretto';
+
+    public const PASSWORD_ERROR_REQUIRED_MSG = 'La password è obbligatoria';
+    public const PASSWORD_ERROR_NONE_MSG = 'Password accettata';
 
     private $user;
     private $errors = [] ;// Array<ValidationResult>;
@@ -37,6 +40,7 @@ class UserValidation {
         $this->errors['lastName']  = $this->validateLastName();
         $this->errors['email']  = $this->validateEmail();
         $this->errors['birthday']  = $this->validateBirthday();
+        $this->errors['password'] = $this->validatePassword();
 
     }
 
@@ -107,6 +111,17 @@ class UserValidation {
             }
             
         } 
+    }
+
+    private function validatePassword():?ValidationResult
+    {
+        $password = $this->user->getPassword();
+        if (empty($password)){  
+            return new ValidationResult(self::PASSWORD_ERROR_REQUIRED_MSG, false, $password);  
+        }  
+        else {
+            return new ValidationResult(self::PASSWORD_ERROR_NONE_MSG, true, $password);
+        }
     }
 
     /**

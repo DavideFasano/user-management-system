@@ -54,3 +54,37 @@
       valore 
       ''
       "Mario"              - ''
+
+
+
+
+- Aggiungere la password
+  - [x] aggiungere attributo password nel database 
+  - [x] aggiungere campo password nel form
+  - [x] aggiungere propietà password nella classe User
+
+- Impostare una chiave unica sulla mail (non ci possono essere due utenti con la stessa mail)
+- Quando crei un nuovo utente di crypta la password
+
+
+- [ ] Implementare la schermata di logIn
+  - [x] **login_user.php** controller
+  - [x] form dove inserisco email e password
+  - [ ] aggiungere **UserModel::autenticate($username,$password):?User**     submit, dati via post 
+  - [ ] se l'utente esiste accedo all'elenco degli utenti
+
+
+  - [] creare tabella interesse(interesseId, nome)
+  - [] creare tabella user_interesse(userId,interesseId)
+
+  - [] creare InteresseModel
+  - [] modificare crud utenti per permettere di selezionare un interesse
+
+    - [] CREATE USER - ottenere id di un utente appena creato
+    - [] inserire nella tabella user_interesse userId appena creato e InteresseId selezionato
+
+    - [] EDIT USER - trovare interesse dell'utente gia selezionato nel select
+
+    - [] DELETE USER - cancellare riferimento nella tabella user_interesse
+
+    - [] DELETE INTERESSE - cancellare riferimenti nella tabella user_interesse

@@ -46,6 +46,20 @@
             </div>
 
 
+            <div class="form-group">
+               <label for="">password</label>
+               <!-- is-invalid  -->
+               <input
+                value="<?= $password ?>" 
+                class="form-control <?= $passwordClass ?>"  
+                name="password"  
+                type="text">
+               <div class="<?= $passwordClassMessage ?>">
+                  <?= $passwordMessage ?>
+               </div> 
+            </div>
+
+
              <div class="form-group">
                 <label for="">data di nascita</label>
                 <input class="form-control <?= $birthdayClass ?>" value="<?= $birthday ?>" name="birthday" type="date">

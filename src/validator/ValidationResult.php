@@ -3,8 +3,8 @@ namespace sarassoroberto\usm\validator;
 
 /**
  *  + message: string
-    + isValid: bool
-    + value: any
+ *  + isValid: bool
+ *  + value: any
  */
 class ValidationResult {
     private $message ;
