@@ -51,4 +51,17 @@ class InteresseModel{
             echo " " . $th->getMessage();
         }
     }
+
+    public function update($interesse){
+
+        $sql = "UPDATE interesse set nome=:nome WHERE interesseId=:interesse_id;";
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->bindValue(':nome', $interesse->getNome(), PDO::PARAM_STR);
+        $pdostm->execute(); 
+        if ($pdostm->rowCount() === 0) {
+            return false;
+        } else if ($pdostm->rowCount() === 1) {
+            return true;
+        }
+    }
 }
