@@ -25,10 +25,11 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     //list($password,$passwordClass,$passwordClassMessage,$passwordMessage) = ValidationFormHelper::getDefault();
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $cryptPassw = md5($password);
     //var_dump($email);
     //var_dump($password);
-    if($email && $password){
-        $user = (new UserSession())->autenticate($email,$password);
+    if($email && $cryptPassw){
+        $user = (new UserSession())->autenticate($email,$cryptPassw);
         if(!is_null($user)){
             header('location: ./list_users.php');
         }else{
