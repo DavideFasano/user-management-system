@@ -24,7 +24,9 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
 if ($_SERVER['REQUEST_METHOD']==='POST') {
 
-    $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday'], $_POST['password']);
+    $cryptPasswd = md5($_POST['password']);
+
+    $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday'], $cryptPasswd);
     $val = new UserValidation($user);
     $firstNameValidation = $val->getError('firstName');
     $lastNameValidation = $val->getError('lastName');
