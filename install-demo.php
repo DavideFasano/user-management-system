@@ -18,7 +18,20 @@ $sql = "DROP DATABASE if exists $dbname;
             password varchar(50) NOT NULL,
             birthday DATE,
             UNIQUE (email)
-        )";
+        );
+
+        CREATE table if not exists interesse (
+            interesseId int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            nome varchar(255) NOT NULL
+        ); 
+        
+        CREATE table if not exists user_interesse (
+            userId int(10) NOT NULL,
+            interesseId int(10) NOT NULL,
+            FOREIGN KEY (userId) REFERENCES User(userId),
+            FOREIGN KEY (interesseId) REFERENCES interesse(interesseId),
+            CONSTRAINT UC_user_interesse UNIQUE (userId,interesseId)
+        );";
 
 $conn->exec($sql);
 
@@ -41,7 +54,11 @@ $sqlToInsertUserQuery = "INSERT INTO User (userId, firstName, lastName, email, b
                             INSERT INTO User (userId, firstName, lastName, email, birthday, password) VALUES (17, 'Mario', 'FERRARI', 'mario.ferrari2@email.com', '2000-08-15', '595de35024027486d7aef6a8585f6982');
                             INSERT INTO User (userId, firstName, lastName, email, birthday, password) VALUES (18, 'Luigi', 'RUSSO', 'luigi.russo2@email.com', '2003-10-15', '595de35024027486d7aef6a8585f6982');
                             INSERT INTO User (userId, firstName, lastName, email, birthday, password) VALUES (19, 'Achille', 'BIANCHI', 'achille.bianchi@email.com', '2000-05-08', '595de35024027486d7aef6a8585f6982');
-                            INSERT INTO User (userId, firstName, lastName, email, birthday, password) VALUES (20, 'Adriano', 'ROMANO', 'adriano.romano@email.com', '2007-04-23', '595de35024027486d7aef6a8585f6982');"; 
-
+                            INSERT INTO User (userId, firstName, lastName, email, birthday, password) VALUES (20, 'Adriano', 'ROMANO', 'adriano.romano@email.com', '2007-04-23', '595de35024027486d7aef6a8585f6982'); 
+                            INSERT INTO interesse (interesseId, nome) VALUES (1, 'Sport');
+                            INSERT INTO interesse (interesseId, nome) VALUES (2, 'Automobili');
+                            INSERT INTO interesse (interesseId, nome) VALUES (3, 'Musica');
+                            INSERT INTO interesse (interesseId, nome) VALUES (4, 'Scacchi');
+                            INSERT INTO interesse (interesseId, nome) VALUES (5, 'Droga');";
 
 $conn->exec($sqlToInsertUserQuery);
